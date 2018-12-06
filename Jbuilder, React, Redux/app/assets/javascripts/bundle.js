@@ -132,8 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_4__["default"])();
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pokedex"), root); //testing
+  // window.store = store;
 
-  window.store = store;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   window.receiveAllPokemon = _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_3__["receiveAllPokemon"];
   window.fetchAllPokemon = _util_api_util__WEBPACK_IMPORTED_MODULE_2__["fetchAlPokemon"];
 });
@@ -151,10 +153,12 @@ document.addEventListener('DOMContentLoaded', function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pokemon_reducer */ "./frontend/reducers/pokemon_reducer.js");
+/* harmony import */ var _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/pokemon_actions */ "./frontend/actions/pokemon_actions.js");
 
  // import itemsReducer from './item_reducer';
 
-var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducer"])({
+
+var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   pokemon: _pokemon_reducer__WEBPACK_IMPORTED_MODULE_1__["default"] // items: itemsReducer
 
 });
@@ -184,7 +188,7 @@ var pokemonReducer = function pokemonReducer() {
 
   switch (action.type) {
     case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_POKEMON"]:
-      return Object.merge({}, state, action.pokemon);
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.pokemon);
 
     default:
       return state;
@@ -208,7 +212,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
 
-var rootReducer = combineReducers({
+var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_1__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);

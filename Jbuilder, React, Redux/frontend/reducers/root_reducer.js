@@ -1,5 +1,5 @@
 import entitiesReducer from './entities_reducer';
-import { combineReducer } from 'redux';
+import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
   entities: entitiesReducer
