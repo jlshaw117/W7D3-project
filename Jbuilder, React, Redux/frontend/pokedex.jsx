@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as APIUtil from './util/api_util';
 import { RECEIVE_ALL_POKEMON, receiveAllPokemon, requestAllPokemon } from './actions/pokemon_actions';
 import configureStore from './store/store';
+import { selectAllPokemon } from './reducers/selectors';
 
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();
@@ -16,4 +17,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.receiveAllPokemon = receiveAllPokemon;
   window.requestAllPokemon = requestAllPokemon;
   window.fetchAllPokemon = APIUtil.fetchAllPokemon;
+  window.selectAllPokemon = selectAllPokemon;
 });
