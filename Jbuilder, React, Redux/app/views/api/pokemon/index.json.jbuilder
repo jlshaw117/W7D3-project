@@ -1,4 +1,4 @@
-json.array! @pokemon do |pokemon|
+@pokemon.each do |pokemon|
 
   json.set! pokemon.id do
     json.extract! pokemon, :id, :name
